@@ -24,31 +24,46 @@ class MyApp:
 		self.myParent = parent  
 		self.myContainer1 = Frame(parent)
 		self.myContainer1.pack()
-		
+		#Added more button information
+		self.myContainer2 = Frame(parent)
+		self.myContainer2.pack()
 		self.button1 = Button(self.myContainer1)
 		self.button1.configure(text="Left", background= "green")
 		self.button1.grid(row=0,column=0)
-		
-	
 		# "Bind" an action to the first button												
-		self.button1.bind("<Button-1>", self.button1Click)
-		 
-		  
+		self.button1.bind("<Button-1>", self.button1Click) 
 		# This creates the drawpad - no need to change this 
 		drawpad.pack()
-		
+		# Added button2 information
+		self.button2 = Button(self.myContainer2)
+		self.button2.configure(text="Right", background= "cyan")
+		self.button2.grid(row=0,column=0)						
+		self.button2.bind("<Button-1>", self.button2Click) 
+		drawpad.pack()
 
-		
 	def button1Click(self, event):   
 		# Make the oval move to the left!
                 # "global" makes sure that we can access our oval and our drawpad
                 # Add in boundary detection
 		global oval
 		global drawpad
+		drawpad.move(oval, -10, 0)
 		global drawpadwidth
 		global drawpadheight
+		
+	# Add the button2Click method		
+	def button2Click(self, event):   
+		# Move to the right
+		global oval
+		global drawpad
+	        drawpad.move(oval, 10, 0)
+	        global drawpadwidth
+		global drawpadheight
+		
+
+		
 	
-	# Add the button2Click method
+	
 		
 myapp = MyApp(root)
 

@@ -51,7 +51,6 @@ class MyApp:
 		# Ensure that we are doing our collision detection
 		# After we move our object!
 	
-	
 		
 myapp = MyApp(root)
 
