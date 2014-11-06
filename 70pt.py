@@ -18,8 +18,6 @@ targety2 = 80
 target = drawpad.create_rectangle(targetx1,targety1,targetx2,targety2, fill="blue")
 player = drawpad.create_rectangle(240,240,260,260, fill="pink")
 
-
-
 class MyApp:
 	def __init__(self, parent):
 	        # Make sure the drawpad is accessible from inside the function
@@ -27,32 +25,29 @@ class MyApp:
 		self.myParent = parent  
 		self.myContainer1 = Frame(parent)
 		self.myContainer1.pack()
-		
 		self.button1 = Button(self.myContainer1)
 		self.button1.configure(text="Up", background= "green")
 		self.button1.grid(row=0,column=0)
-					
 		# "Bind" an action to the first button												
 		self.button1.bind("<Button-1>", self.button1Click)
-
-		  
 		# This creates the drawpad - no need to change this 
 		drawpad.pack()
-		
-
-		
+	        	
 	def button1Click(self, event):   
                 # "global" makes sure that we can access our oval and our drawpad
+		#Added global player and target
 		global player
 		global drawpad
 		global target
+		# Added movement to player and collision detection
+		drawpad.move(player,0,-20)
                 x1,y1,x2,y2 = drawpad.coords(player)
 		global targetx1, targety1, targetx2, targety2
                 if (x1 > targetx1 and x2 < targetx2) and (y1 > targety1 and y2 < targety2):
                     drawpad.itemconfig(target, fill="red")
                 else:
-                    drawpad.itemconfig(target, fill = "blue"
-
+                    drawpad.itemconfig(target, fill = "blue")
+                    
 		# Ensure that we are doing our collision detection
 		# After we move our object!
 	
