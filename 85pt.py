@@ -48,30 +48,24 @@ class MyApp:
 		global oval
 		global drawpad
 		# Added movement to left
-		drawpad.move(oval, -10, 0)
 		x1,y1,x2,y2 = drawpad.coords(oval)
 		global drawpadwidth
 		global drawpadheight
-################### Fix this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		if (x1 > targetx1 and x2 < targetx2) and (y1 > targety1 and y2 < targety2):
-                    drawpad.itemconfig(target, fill="red")
-                else:
-                    drawpad.itemconfig(target, fill = "blue")
+		#Added boundary
+		if (x1 > 0):
+                    drawpad.move(oval, -10, 0)
 		
 	# Add the button2Click method		
 	def button2Click(self, event):   
 		global oval
 		global drawpad
 	        # Added movement to right
-	        drawpad.move(oval, 10, 0)
 	        x1,y1,x2,y2 = drawpad.coords(oval)
 	        global drawpadwidth
 		global drawpadheight
-################### Fix this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		if (x1 > targetx1 and x2 < targetx2) and (y1 > targety1 and y2 < targety2):
-                    drawpad.itemconfig(target, fill="red")
-                else:
-                    drawpad.itemconfig(target, fill = "blue")
+		#Added boundary
+		if (x2 < drawpadwidth):
+		    drawpad.move(oval, 10, 0)
 		
 
 		
